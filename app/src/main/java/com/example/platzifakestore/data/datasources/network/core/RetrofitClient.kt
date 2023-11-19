@@ -1,5 +1,6 @@
 package com.example.platzifakestore.data.datasources.network.core
 
+import com.example.platzifakestore.data.datasources.network.services.ProductsService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,5 +12,9 @@ object RetrofitClient {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    val productsService: ProductsService by lazy {
+        retrofit.create(ProductsService::class.java)
     }
 }
