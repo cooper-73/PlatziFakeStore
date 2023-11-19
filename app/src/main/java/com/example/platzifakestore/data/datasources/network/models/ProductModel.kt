@@ -5,11 +5,11 @@ data class ProductModel(
     val title: String,
     val price: Int,
     val description: String,
-    val category: Category,
+    val category: CategoryModel,
     val images: List<String>
 )
 
-data class Category(
+data class CategoryModel(
     val id: Int,
     val name: String,
     val image: String,
