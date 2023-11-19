@@ -31,7 +31,9 @@ class ProductsFragment : Fragment(), BaseFragment {
     }
 
     override fun initObservers() {
-        // Empty
+        viewModel.products.observe(viewLifecycleOwner) {
+            adapter.updateData(it)
+        }
     }
 
     override fun initUI() {
@@ -41,9 +43,7 @@ class ProductsFragment : Fragment(), BaseFragment {
     }
 
     override fun loadData() {
-        adapter.updateData(
-            viewModel.getAllProducts()
-        )
+        viewModel.getAllProducts()
     }
 
 }
