@@ -5,8 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.platzifakestore.domain.models.Category
 import com.example.platzifakestore.domain.models.Product
+import com.example.platzifakestore.domain.usecases.ProductsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProductsViewModel : ViewModel() {
+@HiltViewModel
+class ProductsViewModel @Inject constructor(
+    private val productsUseCase: ProductsUseCase
+) : ViewModel() {
 
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>> = _products

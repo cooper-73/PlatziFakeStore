@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.platzifakestore.databinding.FragmentProductsBinding
 import com.example.platzifakestore.presentation.adapters.ProductAdapter
 import com.example.platzifakestore.presentation.viewmodels.ProductsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductsFragment : Fragment(), BaseFragment {
 
     private lateinit var binding: FragmentProductsBinding
