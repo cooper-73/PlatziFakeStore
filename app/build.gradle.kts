@@ -48,6 +48,7 @@ dependencies {
     val viewModelVersion = "2.6.2"
     val liveDataVersion = "2.6.2"
     val picassoVersion = "2.8"
+    val retrofitVersion = "2.9.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -72,4 +73,8 @@ dependencies {
 
     // Picasso
     implementation("com.squareup.picasso:picasso:$picassoVersion")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 }
