@@ -42,9 +42,11 @@ android {
 }
 
 dependencies {
+    val fragmentVersion = "1.6.2"
     val navVersion = "2.7.5"
     val viewModelVersion = "2.6.2"
     val liveDataVersion = "2.6.2"
+    val picassoVersion = "2.8"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -53,6 +55,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
@@ -63,4 +68,7 @@ dependencies {
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion")
+
+    // Picasso
+    implementation("com.squareup.picasso:picasso:$picassoVersion")
 }
