@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.platzifakestore.databinding.FragmentProductsBinding
 
-class ProductsFragment : Fragment() {
+class ProductsFragment : Fragment(), BaseFragment {
+
     private lateinit var binding: FragmentProductsBinding
 
     override fun onCreateView(
@@ -17,6 +18,22 @@ class ProductsFragment : Fragment() {
         binding = FragmentProductsBinding.inflate(layoutInflater, container, false)
 
         return binding.root
+    }
+
+    override fun bindViewModel() {
+        // Empty
+    }
+
+    override fun initObservers() {
+        // Empty
+    }
+
+    override fun initUI() {
+        // Empty
+    }
+
+    override fun loadData() {
+        // Empty
     }
 
 }
