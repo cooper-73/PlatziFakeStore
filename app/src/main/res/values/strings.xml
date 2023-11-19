@@ -2,4 +2,5 @@
     <string name="app_name">PlatziFakeStore</string>
     <string name="label_products">Products Fragment</string>
     <string name="product_image_desc">Product Image</string>
+    <string name="product_price_format">Price: $%1$d</string>
 </resources>
