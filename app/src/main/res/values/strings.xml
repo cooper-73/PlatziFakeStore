@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PlatziFakeStore</string>
+    <string name="label_products">Products Fragment</string>
 </resources>
