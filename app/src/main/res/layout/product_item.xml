@@ -21,7 +21,8 @@
             android:background="@color/black"
             android:contentDescription="@string/product_image_desc"
             android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher"
+            app:error="@{@drawable/platzi_logo}"
+            app:imageUrls="@{product.images}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
