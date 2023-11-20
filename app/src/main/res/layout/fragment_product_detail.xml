@@ -26,8 +26,6 @@
             android:contentDescription="@string/product_image_desc"
             android:scaleType="fitCenter"
             android:src="@drawable/platzi_logo"
-            app:error="@{@drawable/platzi_logo}"
-            app:imageUrls="@{product.images}"
             app:layout_constraintBottom_toTopOf="@id/tvProductName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
