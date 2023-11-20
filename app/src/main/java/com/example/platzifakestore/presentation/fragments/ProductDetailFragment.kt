@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.platzifakestore.databinding.FragmentProductDetailBinding
-import com.example.platzifakestore.presentation.viewmodels.ProductsViewModel
+import com.example.platzifakestore.presentation.viewmodels.ProductDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
@@ -17,7 +17,7 @@ class ProductDetailFragment : Fragment(), BaseFragment {
 
     private val args: ProductDetailFragmentArgs by navArgs()
     private lateinit var binding: FragmentProductDetailBinding
-    private val viewModel: ProductsViewModel by viewModels()
+    private val viewModel: ProductDetailViewModel by viewModels()
     private var productId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

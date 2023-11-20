@@ -13,24 +13,20 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductsViewModel @Inject constructor(
+class ProductDetailViewModel @Inject constructor(
     private val productsUseCase: ProductsUseCase
 ) : ViewModel() {
 
-    private val _products = MutableLiveData<List<Product>>()
-    val products: LiveData<List<Product>> = _products
+    private val _product = MutableLiveData<Product>()
+    val product: LiveData<Product> = _product
 
-    init {
-        getAllProducts()
-    }
-
-    fun getAllProducts() {
+    fun getProduct(productId: Int) {
         viewModelScope.launch {
-            val products = withContext(Dispatchers.IO) {
-                productsUseCase.getAllProducts()
+            val product = withContext(Dispatchers.IO) {
+                productsUseCase.getProduct(productId)
             }
 
-            _products.postValue(products)
+            _product.postValue(product)
         }
     }
 }
