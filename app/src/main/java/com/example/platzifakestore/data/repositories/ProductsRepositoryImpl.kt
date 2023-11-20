@@ -8,4 +8,8 @@ class ProductsRepositoryImpl(private val networkDataSource: ProductsDatasource) 
     override suspend fun getAllProducts(): List<ProductModel> {
         return networkDataSource.getAllProducts()
     }
+
+    override suspend fun getProduct(productId: Int): ProductModel {
+        return networkDataSource.getProduct(productId)
+    }
 }
