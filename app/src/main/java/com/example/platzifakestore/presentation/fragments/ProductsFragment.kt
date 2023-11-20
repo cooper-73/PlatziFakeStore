@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.platzifakestore.R
 import com.example.platzifakestore.databinding.FragmentProductsBinding
 import com.example.platzifakestore.presentation.adapters.ProductAdapter
 import com.example.platzifakestore.presentation.viewmodels.ProductsViewModel
@@ -21,6 +22,7 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
     private val viewModel: ProductsViewModel by viewModels()
     private val adapter = ProductAdapter(this)
     private val filteredAdapter = ProductAdapter(this)
+    private var isAsc = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +48,19 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
     }
 
     override fun initUI() {
+        binding.sbProductsName.inflateMenu(R.menu.searchbar_menu)
+        binding.sbProductsName.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_sort -> {
+                    viewModel.sortProductsByPrice(isAsc)
+                    isAsc = !isAsc
+                    true
+                }
+
+                else -> false
+            }
+        }
+
         binding.svProductsName.setupWithSearchBar(binding.sbProductsName)
 
         binding.svProductsName.editText.setOnEditorActionListener { v, actionId, _ ->
