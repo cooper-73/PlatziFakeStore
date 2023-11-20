@@ -15,6 +15,6 @@ class ProductsRepositoryImpl(
     }
 
     override suspend fun getProduct(productId: Int): ProductModel {
-        return networkDataSource.getProduct(productId)
+        return databaseDatasource.getProduct(productId)
     }
 }
