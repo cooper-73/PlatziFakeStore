@@ -18,4 +18,9 @@ class ProductsUseCase @Inject constructor(private val productsRepository: Produc
         return productsRepository.filterProductsByTitle(title)
             .map { ProductMapper.productModelToProduct(it) }
     }
+
+    suspend fun getProductsSortedByPrice(isAsc: Boolean): List<Product> {
+        return productsRepository.getProductsSortedByPrice(isAsc)
+            .map { ProductMapper.productModelToProduct(it) }
+    }
 }
