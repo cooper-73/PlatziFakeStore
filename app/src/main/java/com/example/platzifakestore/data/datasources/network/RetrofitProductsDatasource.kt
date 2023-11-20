@@ -22,4 +22,8 @@ class RetrofitProductsDatasource(private val productsService: ProductsService) :
         throw NotImplementedError()
     }
 
+    override suspend fun getProductsSortedByPrice(isAsc: Boolean): List<ProductModel> {
+        throw NotImplementedError()
+    }
+
 }

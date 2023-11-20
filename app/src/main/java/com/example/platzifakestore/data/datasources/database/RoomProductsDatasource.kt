@@ -42,4 +42,9 @@ class RoomProductsDatasource(
         return productsDao.filterProductsByTitle(title)
             .map { ProductModelMapper.productWithCategoryToProductModel(it) }
     }
+
+    override suspend fun getProductsSortedByPrice(isAsc: Boolean): List<ProductModel> {
+        return productsDao.getProductsSortedByPrice(isAsc)
+            .map { ProductModelMapper.productWithCategoryToProductModel(it) }
+    }
 }
