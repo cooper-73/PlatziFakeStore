@@ -21,4 +21,8 @@ class ProductsRepositoryImpl(
     override suspend fun filterProductsByTitle(title: String): List<ProductModel> {
         return databaseDatasource.filterProductsByTitle(title)
     }
+
+    override suspend fun getProductsSortedByPrice(isAsc: Boolean): List<ProductModel> {
+        return databaseDatasource.getProductsSortedByPrice(isAsc)
+    }
 }
