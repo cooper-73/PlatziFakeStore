@@ -29,4 +29,13 @@ class ProductsViewModel @Inject constructor(
             _products.postValue(products)
         }
     }
+
+    fun getProduct(productId: Int = 3) {
+        viewModelScope.launch {
+            val product = withContext(Dispatchers.IO) {
+                productsUseCase.getProduct(productId)
+            }
+
+        }
+    }
 }
