@@ -17,6 +17,7 @@
         android:backgroundTint="?attr/colorPrimaryContainer">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cvProductItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -8,7 +8,8 @@ import com.example.platzifakestore.R
 import com.example.platzifakestore.databinding.ProductItemBinding
 import com.example.platzifakestore.domain.models.Product
 
-class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(val listener: Listener) :
+    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     private var productsList: List<Product> = emptyList()
 
@@ -36,7 +37,15 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
         fun bind(product: Product) {
             binding.product = product
+
+            binding.cvProductItem.setOnClickListener {
+                listener.onProductClick(product.id)
+            }
         }
+    }
+
+    interface Listener {
+        fun onProductClick(id: Int)
     }
 
 }

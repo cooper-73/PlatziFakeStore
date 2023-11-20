@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.platzifakestore.R
 import com.example.platzifakestore.databinding.FragmentProductsBinding
 import com.example.platzifakestore.presentation.adapters.ProductAdapter
 import com.example.platzifakestore.presentation.viewmodels.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductsFragment : Fragment(), BaseFragment {
+class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
 
     private lateinit var binding: FragmentProductsBinding
     private val viewModel: ProductsViewModel by viewModels()
-    private val adapter = ProductAdapter()
+    private val adapter = ProductAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +48,10 @@ class ProductsFragment : Fragment(), BaseFragment {
 
     override fun loadData() {
         viewModel.getAllProducts()
+    }
+
+    override fun onProductClick(id: Int) {
+        findNavController().navigate(R.id.action_productsFragment_to_productDetailFragment)
     }
 
 }
