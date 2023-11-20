@@ -53,6 +53,7 @@ dependencies {
     val retrofitVersion = "2.9.0"
     val coroutinesVersion = "1.6.4"
     val daggerHiltVersion = "2.48"
+    val roomVersion = "2.6.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -88,4 +89,9 @@ dependencies {
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:$daggerHiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$daggerHiltVersion")
+    
+    // Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 }
