@@ -20,6 +20,9 @@ class ProductsViewModel @Inject constructor(
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>> = _products
 
+    private val _filteredProducts = MutableLiveData<List<Product>>()
+    val filteredProducts: LiveData<List<Product>> = _filteredProducts
+
     init {
         getAllProducts()
     }
@@ -31,6 +34,16 @@ class ProductsViewModel @Inject constructor(
             }
 
             _products.postValue(products)
+        }
+    }
+
+    fun filterProductsByTitle(title: String) {
+        viewModelScope.launch {
+            val filterdProducts = withContext(Dispatchers.IO) {
+                productsUseCase.filterProductsByTitle(title)
+            }
+
+            _filteredProducts.postValue(filterdProducts)
         }
     }
 }
