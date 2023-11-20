@@ -6,15 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.platzifakestore.databinding.FragmentProductDetailBinding
 import com.example.platzifakestore.presentation.viewmodels.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class ProductDetailFragment : Fragment(), BaseFragment {
 
+    private val args: ProductDetailFragmentArgs by navArgs()
     private lateinit var binding: FragmentProductDetailBinding
     private val viewModel: ProductsViewModel by viewModels()
+    private var productId by Delegates.notNull<Int>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        productId = args.productId
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +50,7 @@ class ProductDetailFragment : Fragment(), BaseFragment {
     }
 
     override fun loadData() {
-        viewModel.getProduct()
+        viewModel.getProduct(productId)
     }
 
 }

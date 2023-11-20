@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.platzifakestore.R
 import com.example.platzifakestore.databinding.FragmentProductsBinding
 import com.example.platzifakestore.presentation.adapters.ProductAdapter
 import com.example.platzifakestore.presentation.viewmodels.ProductsViewModel
@@ -51,7 +50,11 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
     }
 
     override fun onProductClick(id: Int) {
-        findNavController().navigate(R.id.action_productsFragment_to_productDetailFragment)
+        findNavController().navigate(
+            ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(
+                productId = id
+            )
+        )
     }
 
 }
