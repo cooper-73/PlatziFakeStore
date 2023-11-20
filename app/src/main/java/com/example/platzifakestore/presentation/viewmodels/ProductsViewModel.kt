@@ -23,6 +23,10 @@ class ProductsViewModel @Inject constructor(
     private val _product = MutableLiveData<Product>()
     val product: LiveData<Product> = _product
 
+    init {
+        getAllProducts()
+    }
+
     fun getAllProducts() {
         viewModelScope.launch {
             val products = withContext(Dispatchers.IO) {

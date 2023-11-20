@@ -46,7 +46,7 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
     }
 
     override fun loadData() {
-        viewModel.getAllProducts()
+        // Empty
     }
 
     override fun onProductClick(id: Int) {
