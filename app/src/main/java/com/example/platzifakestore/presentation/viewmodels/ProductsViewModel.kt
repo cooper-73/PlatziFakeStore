@@ -46,4 +46,14 @@ class ProductsViewModel @Inject constructor(
             _filteredProducts.postValue(filterdProducts)
         }
     }
+
+    fun sortProductsByPrice(isAsc: Boolean) {
+        viewModelScope.launch {
+            val sortedProducts = withContext(Dispatchers.IO) {
+                productsUseCase.getProductsSortedByPrice(isAsc)
+            }
+
+            _products.postValue(sortedProducts)
+        }
+    }
 }
