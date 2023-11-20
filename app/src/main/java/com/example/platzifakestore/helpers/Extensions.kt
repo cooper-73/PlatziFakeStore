@@ -6,6 +6,11 @@ import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("imageUrls", "error")
-fun ImageView.loadImage(urls: List<String>, errorDrawable: Drawable) {
-    Picasso.get().load(urls.firstOrNull()).error(errorDrawable).into(this)
+fun ImageView.loadImage(urls: List<String>?, errorDrawable: Drawable) {
+    if (urls.isNullOrEmpty()) {
+        this.setImageDrawable(errorDrawable)
+        return
+    }
+
+    Picasso.get().load(urls.first()).error(errorDrawable).into(this)
 }
