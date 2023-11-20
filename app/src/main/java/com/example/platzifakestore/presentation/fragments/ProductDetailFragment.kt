@@ -30,7 +30,9 @@ class ProductDetailFragment : Fragment(), BaseFragment {
     }
 
     override fun initObservers() {
-        // Empty
+        viewModel.product.observe(viewLifecycleOwner) {
+            binding.product = it
+        }
     }
 
     override fun initUI() {
@@ -38,7 +40,7 @@ class ProductDetailFragment : Fragment(), BaseFragment {
     }
 
     override fun loadData() {
-        // Empty
+        viewModel.getProduct()
     }
 
 }
