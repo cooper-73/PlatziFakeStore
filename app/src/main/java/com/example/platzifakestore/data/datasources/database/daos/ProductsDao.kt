@@ -27,4 +27,12 @@ interface ProductsDao {
     )
     suspend fun getProductWithCategory(productId: Int): ProductWithCategory
 
+    @Transaction
+    @Query(
+        "SELECT products.category_id AS categoryId, products.*, categories.name AS categoryName, categories.image AS categoryImage " +
+                "FROM products INNER JOIN categories ON products.category_id = categories.id " +
+                "WHERE LOWER(products.title) LIKE '%' || LOWER(:title) || '%'"
+    )
+    suspend fun filterProductsByTitle(title: String): List<ProductWithCategory>
+
 }
