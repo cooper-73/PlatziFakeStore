@@ -14,14 +14,14 @@ interface ProductsDao {
 
     @Transaction
     @Query(
-        "SELECT products.*, categories.name AS categoryName, categories.image AS categoryImage " +
+        "SELECT products.category_id AS categoryId, products.*, categories.name AS categoryName, categories.image AS categoryImage " +
                 "FROM products INNER JOIN categories ON products.category_id = categories.id"
     )
     suspend fun getProductsWithCategory(): List<ProductWithCategory>
 
     @Transaction
     @Query(
-        "SELECT products.*, categories.name AS categoryName, categories.image AS categoryImage " +
+        "SELECT products.category_id AS categoryId, products.*, categories.name AS categoryName, categories.image AS categoryImage " +
                 "FROM products INNER JOIN categories ON products.category_id = categories.id " +
                 "WHERE products.id = :productId"
     )
