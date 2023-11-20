@@ -9,7 +9,9 @@ class ProductsRepositoryImpl(
 ) :
     ProductsRepository {
     override suspend fun getAllProducts(): List<ProductModel> {
-        return networkDataSource.getAllProducts()
+        val products = networkDataSource.getAllProducts()
+        databaseDatasource.saveProducts(products)
+        return products
     }
 
     override suspend fun getProduct(productId: Int): ProductModel {
