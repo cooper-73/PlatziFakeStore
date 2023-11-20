@@ -3,4 +3,6 @@
     <string name="label_products">Products Fragment</string>
     <string name="product_image_desc">Product Image</string>
     <string name="product_price_format">Price: $%1$d</string>
+    <string name="product_detail_price_format">$ %1$d</string>
+    <string name="product_detail_category_format">Category: %1$s</string>
 </resources>

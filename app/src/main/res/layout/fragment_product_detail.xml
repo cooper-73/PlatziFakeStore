@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,10 +10,98 @@
             type="com.example.platzifakestore.domain.models.Product" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.fragments.ProductsFragment">
+
+        <ImageView
+            android:id="@+id/ivProductImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/product_image_desc"
+            android:scaleType="fitCenter"
+            android:src="@drawable/platzi_logo"
+            app:error="@{@drawable/platzi_logo}"
+            app:imageUrls="@{product.images}"
+            app:layout_constraintBottom_toTopOf="@id/tvProductName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:padding="8dp"
+            android:text="@{product.title}"
+            android:textColor="?attr/colorOnPrimaryContainer"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvProductCategory"
+            app:layout_constraintEnd_toStartOf="@id/tvProductPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Handmade Fresh Table" />
+
+        <TextView
+            android:id="@+id/tvProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:text="@{@string/product_detail_price_format(product.price)}"
+            android:textColor="?attr/colorOnPrimaryContainer"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvProductName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvProductName"
+            app:layout_constraintTop_toTopOf="@id/tvProductName"
+            tools:text="$ 687" />
+
+        <TextView
+            android:id="@+id/tvProductCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:text="@{@string/product_detail_category_format(product.category)}"
+            android:textColor="?attr/colorOnPrimaryContainer"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/tvProductDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Category: Others" />
+
+        <TextView
+            android:id="@+id/tvProductDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:padding="8dp"
+            android:text="@{product.description}"
+            android:textColor="?attr/colorOnPrimaryContainer"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Andy shoes are designed to keeping in..." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
