@@ -7,13 +7,17 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import javax.inject.Named
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object RepositoriesModule {
 
     @Provides
-    fun provideProductRepository(productsDatasource: ProductsDatasource): ProductsRepository {
-        return ProductsRepositoryImpl(productsDatasource)
+    fun provideProductRepository(
+        @Named("retrofitProductsDatasource") networkProductsDatasource: ProductsDatasource,
+        @Named("roomProductsDatasource") databaseProductsDatasource: ProductsDatasource
+    ): ProductsRepository {
+        return ProductsRepositoryImpl(networkProductsDatasource, databaseProductsDatasource)
     }
 }
