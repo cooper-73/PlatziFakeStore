@@ -33,7 +33,7 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun getProduct(productId: Int = 3) {
+    fun getProduct(productId: Int) {
         viewModelScope.launch {
             val product = withContext(Dispatchers.IO) {
                 productsUseCase.getProduct(productId)
