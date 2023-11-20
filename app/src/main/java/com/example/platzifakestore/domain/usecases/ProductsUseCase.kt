@@ -9,4 +9,8 @@ class ProductsUseCase @Inject constructor(private val productsRepository: Produc
     suspend fun getAllProducts(): List<Product> {
         return productsRepository.getAllProducts().map { ProductMapper.productModelToProduct(it) }
     }
+
+    suspend fun getProduct(productId: Int): Product {
+        return ProductMapper.productModelToProduct(productsRepository.getProduct(productId))
+    }
 }
