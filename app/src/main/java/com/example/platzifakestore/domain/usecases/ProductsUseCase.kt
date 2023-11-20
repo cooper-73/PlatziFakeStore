@@ -13,4 +13,9 @@ class ProductsUseCase @Inject constructor(private val productsRepository: Produc
     suspend fun getProduct(productId: Int): Product {
         return ProductMapper.productModelToProduct(productsRepository.getProduct(productId))
     }
+
+    suspend fun filterProductsByTitle(title: String): List<Product> {
+        return productsRepository.filterProductsByTitle(title)
+            .map { ProductMapper.productModelToProduct(it) }
+    }
 }
