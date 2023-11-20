@@ -17,4 +17,8 @@ class ProductsRepositoryImpl(
     override suspend fun getProduct(productId: Int): ProductModel {
         return databaseDatasource.getProduct(productId)
     }
+
+    override suspend fun filterProductsByTitle(title: String): List<ProductModel> {
+        return databaseDatasource.filterProductsByTitle(title)
+    }
 }
