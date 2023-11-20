@@ -1,10 +1,11 @@
 package com.example.platzifakestore.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
     private lateinit var binding: FragmentProductsBinding
     private val viewModel: ProductsViewModel by viewModels()
     private val adapter = ProductAdapter(this)
+    private val filteredAdapter = ProductAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +39,21 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
         viewModel.products.observe(viewLifecycleOwner) {
             adapter.updateData(it)
         }
+
+        viewModel.filteredProducts.observe(viewLifecycleOwner) {
+            filteredAdapter.updateData(it)
+        }
     }
 
     override fun initUI() {
         binding.svProductsName.setupWithSearchBar(binding.sbProductsName)
+
+        binding.svProductsName.editText.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.filterProductsByTitle(v.text.toString())
+            }
+            false
+        }
 
         binding.rvProductsList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -48,7 +61,7 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
 
         binding.rvSearchProductsList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.rvSearchProductsList.adapter = adapter
+        binding.rvSearchProductsList.adapter = filteredAdapter
     }
 
     override fun loadData() {
