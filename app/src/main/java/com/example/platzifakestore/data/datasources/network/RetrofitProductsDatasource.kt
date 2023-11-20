@@ -14,4 +14,8 @@ class RetrofitProductsDatasource(private val productsService: ProductsService) :
         return productsService.getProduct(productId)
     }
 
+    override suspend fun saveProducts(products: List<ProductModel>) {
+        throw NotImplementedError()
+    }
+
 }
