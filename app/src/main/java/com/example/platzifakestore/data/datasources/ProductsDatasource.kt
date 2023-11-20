@@ -6,4 +6,5 @@ interface ProductsDatasource {
     suspend fun getAllProducts(): List<ProductModel>
     suspend fun getProduct(productId: Int): ProductModel
     suspend fun saveProducts(products: List<ProductModel>)
+    suspend fun filterProductsByTitle(title: String): List<ProductModel>
 }

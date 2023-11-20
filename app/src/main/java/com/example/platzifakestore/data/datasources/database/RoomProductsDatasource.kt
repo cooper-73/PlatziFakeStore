@@ -37,4 +37,9 @@ class RoomProductsDatasource(
             )
         })
     }
+
+    override suspend fun filterProductsByTitle(title: String): List<ProductModel> {
+        return productsDao.filterProductsByTitle(title)
+            .map { ProductModelMapper.productWithCategoryToProductModel(it) }
+    }
 }

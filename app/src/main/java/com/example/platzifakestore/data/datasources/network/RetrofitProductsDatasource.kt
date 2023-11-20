@@ -18,4 +18,8 @@ class RetrofitProductsDatasource(private val productsService: ProductsService) :
         throw NotImplementedError()
     }
 
+    override suspend fun filterProductsByTitle(title: String): List<ProductModel> {
+        throw NotImplementedError()
+    }
+
 }
