@@ -9,6 +9,16 @@
         android:id="@+id/productsFragment"
         android:name="com.example.platzifakestore.presentation.fragments.ProductsFragment"
         android:label="@string/label_products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products">
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.platzifakestore.presentation.fragments.ProductDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_product_detail" />
 
 </navigation>
