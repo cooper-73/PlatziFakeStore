@@ -40,9 +40,15 @@ class ProductsFragment : Fragment(), BaseFragment, ProductAdapter.Listener {
     }
 
     override fun initUI() {
+        binding.svProductsName.setupWithSearchBar(binding.sbProductsName)
+
         binding.rvProductsList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvProductsList.adapter = adapter
+
+        binding.rvSearchProductsList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvSearchProductsList.adapter = adapter
     }
 
     override fun loadData() {

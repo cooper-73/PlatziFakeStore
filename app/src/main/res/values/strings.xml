@@ -6,4 +6,5 @@
     <string name="product_price_format">Price: $%1$d</string>
     <string name="product_detail_price_format">$ %1$d</string>
     <string name="product_detail_category_format">Category: %1$s</string>
+    <string name="product_search_hint">Search by product name</string>
 </resources>
